@@ -5,7 +5,9 @@ defmodule Server.Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Server.Web do
+  scope "/", Server.Web do
     pipe_through :api
+
+    get "/", IndexController, :index
   end
 end

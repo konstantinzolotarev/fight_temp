@@ -38,7 +38,8 @@ defmodule Server.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:poison, "~> 3.1"}]
+     {:poison, "~> 3.1"},
+     {:phoenix_live_reload, "~> 1.0", only: :dev}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
