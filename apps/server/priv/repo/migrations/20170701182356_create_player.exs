@@ -7,7 +7,8 @@ defmodule Server.Repo.Migrations.CreateServer.Player do
       add :username, :string
       add :age, :integer
       add :password, :string
-      add :active, :boolean, default: false
+      add :active, :boolean, default: false, null: false
+      add :is_admin, :boolean, default: false, null: false
 
       timestamps()
     end

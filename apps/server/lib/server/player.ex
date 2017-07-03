@@ -10,6 +10,7 @@ defmodule Server.Player do
     field :password, :string
     field :username, :string
     field :active, :boolean, default: false
+    field :is_admin, :boolean, default: false
 
     timestamps()
   end

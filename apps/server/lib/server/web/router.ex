@@ -5,6 +5,11 @@ defmodule Server.Web.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :api_auth do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+  end
+
   scope "/", Server.Web do
     pipe_through :api
 
