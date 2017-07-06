@@ -21,8 +21,13 @@ defmodule Server.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Server.Application, []},
-     extra_applications: [:logger, :runtime_tools]]
+     extra_applications: get_apps(Mix.env)]
   end
+
+  defp all_apps(), do: [:logger, :runtime_tools, :comeonin]
+
+  defp get_apps(:test), do: all_apps() ++ [:faker]
+  defp get_apps(_), do: all_apps()
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
@@ -40,7 +45,9 @@ defmodule Server.Mixfile do
      {:cowboy, "~> 1.0"},
      {:poison, "~> 3.1"},
      {:guardian, "~> 0.14"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev}]
+     {:comeonin, "~> 3.0"},
+     {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:faker, "~> 0.8", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
