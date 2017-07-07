@@ -26,4 +26,14 @@ defmodule Server.PlayerTest do
     changeset = Player.changeset(%Player{}, data)
     assert changeset.valid?
   end
+
+  test "check unique email" do
+    %Player{}
+    |> Player.changeset(@valid_attrs)
+    |> Server.Repo.insert!
+    player = Player.changeset(%Player{}, @valid_attrs)
+
+    assert {:error, changeset} = Server.Repo.insert(player)
+    IO.inspect changeset.errors[:email]
+  end
 end

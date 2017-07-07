@@ -22,11 +22,11 @@ defmodule Server.Player do
   def changeset(%Player{} = player, attrs) do
     player
     |> cast(attrs, @required_fields ++ @optional_fields)
+    |> hash_password()
     |> validate_required(@required_fields)
     |> unique_constraint(:email)
     |> unique_constraint(:username)
     |> validate_length(:username, min: 3, max: 20)
-    |> hash_password()
     # |> validate_length(:password, min: 5, max: 20)
   end
 

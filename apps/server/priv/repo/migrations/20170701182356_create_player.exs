@@ -13,7 +13,7 @@ defmodule Server.Repo.Migrations.CreateServer.Player do
       timestamps()
     end
 
-    unique_index(:players, [:email])
-    unique_index(:players, [:username])
+    create unique_index(:players, [:email])
+    create unique_index(:players, [:username])
   end
 end
