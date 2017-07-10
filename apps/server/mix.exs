@@ -26,7 +26,6 @@ defmodule Server.Mixfile do
 
   defp all_apps(), do: [:logger, :runtime_tools, :comeonin]
 
-  defp get_apps(:test), do: all_apps() ++ [:faker]
   defp get_apps(_), do: all_apps()
 
   # Specifies which paths to compile per environment.
@@ -47,7 +46,8 @@ defmodule Server.Mixfile do
      {:guardian, "~> 0.14"},
      {:comeonin, "~> 3.0"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:faker, "~> 0.8", only: :test}]
+     {:faker, github: "igas/faker", only: [:test, :dev]}]
+    #  {:faker, "~> 0.8", only: [:test, :dev]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
