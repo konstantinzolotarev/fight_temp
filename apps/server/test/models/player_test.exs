@@ -42,7 +42,7 @@ defmodule Server.PlayerTest do
   end
 
   test "check unique username" do
-    player_data = %{@valid_attrs | email: Faker.Internet.email, username: Faker.String.base64}  
+    player_data = %{@valid_attrs | email: Faker.Internet.email, username: Faker.String.base64}
 
     %Player{}
     |> Player.changeset(player_data)

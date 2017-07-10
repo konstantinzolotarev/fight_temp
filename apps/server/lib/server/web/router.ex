@@ -14,5 +14,14 @@ defmodule Server.Web.Router do
     pipe_through :api
 
     get "/", IndexController, :index
+
+    post "/login", AuthController, :login
+    post "/register", AuthController, :create_player
+  end
+
+  scope "/", Server.Web do  
+    pipe_through :api_auth
+
+    get "/logout", AuthController, :logout
   end
 end
