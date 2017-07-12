@@ -3,7 +3,7 @@ defmodule Server.Web.AuthController do
 
   def login(conn, _params) do
     conn
-    |> text("Ok")
+    |> json(%{data: "ok"})
   end
 
   def logout(conn, _params) do
