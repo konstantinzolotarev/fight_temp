@@ -3,10 +3,17 @@ defmodule Server.AuthControllerTest do
 
   # alias Server.{Repo, Player}
 
-  test "create_player fail without params" do
+  setup do
+    conn = build_conn() |> put_req_header("content-type", "application/json")
+    {:ok, conn: conn}
+  end
 
-    response = build_conn()
-    |> post(auth_path(build_conn(), :login))
-    |> json_response(200)
+  test "create_player fail without params", %{conn: conn} do
+
+    url = auth_path(conn, :login)
+
+    response = conn
+               |> post(url, Poison.encode!(%{"username" => "", "password" => ""}))
+               |> json_response(400)
   end
 end
